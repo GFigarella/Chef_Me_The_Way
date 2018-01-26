@@ -57,3 +57,6 @@ typings/
 # dotenv environment variables file
 .env
 
+#DS and vscode ignore
+.vscode
+.DS_Store
