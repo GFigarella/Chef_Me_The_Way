@@ -1,4 +1,4 @@
-# chefmetheway - A Recipe App for You
+# Chef Me The Way - A Recipe App for You
 
 Placeholder text for app description.
 
