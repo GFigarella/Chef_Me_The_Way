@@ -1,0 +1,36 @@
+@font-face {
+    font-family: "Lazer84";
+    src: url("fonts/Lazer84.ttf");
+    src: 
+    url("css/fonts/Lazer84.woff") format("woff"),
+    url("css/fonts/Lazer84.otf") format("opentype"),
+    url("css/fonts/Lazer84.svg#filename") format("svg");
+    }
+
+body{
+    background: url("images/spoon.jpeg");
+}
+
+h1 {
+    font-family: 'Lazer84';
+    font-weight:normal;
+    font-style:normal;
+    font-size: 80px;
+    color: rgb(189, 3, 3);
+}
+h2{
+    font-family: 'Rajdhani', sans-serif;
+    color: rgb(166, 186, 250);
+}
+h3{
+    color: burlywood;
+}
+.section{
+    width: 70%;
+    margin-left: 15%;
+}
+.container{
+    background: white;
+    width: 45%;
+    height:auto;
+}
