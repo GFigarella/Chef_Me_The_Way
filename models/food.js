@@ -15,6 +15,8 @@ var foodSearch = function(req, res, next) {
 
 app.use(foodSearch);
 
+//testing for API return
+
 app.get("/api/", function(req, res) {
 
     nutritionix.search.standard({
