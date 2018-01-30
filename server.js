@@ -1,81 +1,77 @@
-// server.js
-
-// set up ======================================================================
-// get all the tools we need
-var express  = require('express');
-var session  = require('express-session');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var morgan = require('morgan');
-var app      = express();
-var port     = process.env.PORT || 8080;
-var path = require('path');
-
-var passport = require('passport');
-var flash    = require('connect-flash');
-
-// configuration ===============================================================
-// connect to our database
-
-// require('./config/passport')(passport); // pass passport for configuration
-
-//testtesttest
-
-var NutritionixClient = require('nutritionix');
-var nutritionix = new NutritionixClient({
-    appId: 'da81ce22',
-    appKey: '628619f77ba41aa72c5b3d4360601da6'
-    // debug: true, // defaults to false 
-});
-
-app.get("/api", function (req, res) {
-
-    console.log("Hello?");
-
-    nutritionix.search.standard({
-        q: 'crouton',
-        // use these for paging 
-        limit: 10,
-        offset: 0,
-        // controls the basic nutrient returned in search 
-        search_nutrient: 'calories'
-    }).then(successHandler, errorHandler)
-        .catch(uncaughtExceptionHandler);
-
-	console.log(res);
-
-});
-	
-	///gtestetewtwetew
-
-// set up our express application
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(morgan('dev')); // log every request to the console
-app.use(cookieParser()); // read cookies (needed for auth)
+var express = require('express')
+var app = express()
+var passport = require('passport')
+var session = require('express-session')
+var bodyParser = require('body-parser')
+var env = require('dotenv').load()
+var exphbs = require('express-handlebars')
+ 
+ 
+//For BodyParser
 app.use(bodyParser.urlencoded({
-	extended: true
+    extended: true
 }));
 app.use(bodyParser.json());
-
-app.set('view engine', 'ejs'); // set up ejs for templating
-
-// required for passport
+ 
+ 
+// For Passport
 app.use(session({
-	secret: 'vidyapathaisalwaysrunning',
-	resave: true,
-	saveUninitialized: true
- } )); // session secret
+    secret: 'keyboard cat',
+    resave: true,
+    saveUninitialized: true
+})); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
-app.use(flash()); // use connect-flash for flash messages stored in session
-
-//TEST
-
-
-
-// routes ======================================================================
-require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
-
-// launch ======================================================================
-app.listen(port);
-console.log('The magic happens on port ' + port);
+ 
+ 
+//For Handlebars
+app.set('views', './app/views')
+app.engine('hbs', exphbs({
+    extname: '.hbs'
+}));
+app.set('view engine', '.hbs');
+ 
+ 
+ 
+app.get('/', function(req, res) {
+ 
+    res.render('index');
+ 
+});
+ 
+//Models
+var models = require("./app/models");
+ 
+//Routes
+ 
+var authRoute = require('./app/routes/auth.js')(app,passport);
+ 
+ 
+//load passport strategies
+ 
+require('./app/config/passport/passport.js')(passport, models.user);
+ 
+ 
+//Sync Database
+ 
+models.sequelize.sync().then(function() {
+ 
+    console.log('Nice! Database looks fine')
+ 
+ 
+}).catch(function(err) {
+ 
+    console.log(err, "Something went wrong with the Database Update!")
+ 
+});
+ 
+ 
+app.listen(3000, function(err) {
+ 
+    if (!err)
+ 
+        console.log("Site is live");
+         
+    else console.log(err)
+ 
+});
