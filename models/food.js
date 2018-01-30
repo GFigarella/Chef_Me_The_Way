@@ -1,69 +1,28 @@
-var express = require('express'), Sequelize = require('sequelize'), http = require('http'), restful   = require('sequelize-restful'), sequelize = new Sequelize('database', 'username', 'password'), app = express();
- 
-//API key and require
+var axios = require("axios");
+var express = require('express');
+var app = express();
+var bodyParser = ("body-parser");
 
-var NutritionixClient = require('nutritionix');
-var nutritionix = new NutritionixClient({
-    appId: 'da81ce22',
-    appKey: '628619f77ba41aa72c5b3d4360601da6'
-    // debug: true, // defaults to false 
-});
+//Perform a for loop through the API for the user
 
-// define all your models before the configure block 
- 
-app.configure(function() {
-  app.use(restful(sequelize, { /* options */ }));
-});
- 
-http.createServer(app).listen(app.get('port'), function(){
-  console.log("Express server listening on port " + app.get('port'));
-});
+axios.get("https://api.edamam.com/search?&q=chicken&app_id=4a5d81a2&app_key=379308ab9da9a8ee47f63563d2774ac4&from=0&to=9&q=", {
+})
+.then(function (response) {
+    console.log(response.data.hits);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
 
+//   var recipeRes = response.data.hits.recipe;
 
-//PLACEHOLDER CODE FOR npm CALL TO PACKAGE
+//   res.render
 
-// app.get("/api", function (req, res) {
+  //for this
 
-//     console.log("Hello?");
+  //if response is data hits recipe
 
-//     nutritionix.search.standard({
-//         q: 'crouton',
-//         // use these for paging 
-//         limit: 10,
-//         offset: 0,
-//         // controls the basic nutrient returned in search 
-//         search_nutrient: 'calories'
-//     }).then(successHandler, errorHandler)
-//         .catch(uncaughtExceptionHandler);
-
-//     console.log(res);
-// });
-
-// var foodSearch = function (req, res, next) {
-
-//     console.log("This is working");
-
-//     //testing for API return
-
-//     // app.get("/api", function (req, res) {
-
-//     //     console.log("Hello?");
-
-//     //     nutritionix.search.standard({
-//     //         q: 'crouton',
-//     //         // use these for paging 
-//     //         limit: 10,
-//     //         offset: 0,
-//     //         // controls the basic nutrient returned in search 
-//     //         search_nutrient: 'calories'
-//     //     }).then(successHandler, errorHandler)
-//     //         .catch(uncaughtExceptionHandler);
-
-//     //     console.log(res);
-//     // });
-
-// };
+  //the
 
 // app.use(foodSearch);
-
 app.listen(8080);
