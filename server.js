@@ -6,6 +6,22 @@ var bodyParser = require('body-parser')
 var env = require('dotenv').load()
 var exphbs = require('express-handlebars')
 var port     = process.env.PORT || 8080;
+var models = require("./models");
+
+var passport = require('passport');
+var flash    = require('connect-flash');
+
+// configuration ===============================================================
+// connect to our database
+
+require('./config/passport')(passport); // pass passport for configuration
+
+
+
+// set up our express application
+app.use(morgan('dev')); // log every request to the console
+app.use(cookieParser()); // read cookies (needed for auth)
+=======
  
 //For BodyParser
 app.use(bodyParser.urlencoded({
@@ -22,6 +38,22 @@ app.use(session({
 })); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
+
+
+// routes ======================================================================
+require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+
+// launch ======================================================================
+// app.listen(port);
+// console.log('The magic happens on port ' + port);
+
+models.sequelize
+ .sync()
+  .then( () => {
+ 		app.listener(port, () => console.log("Listening on: " + port));
+  });
+=======
  
  
 //For Handlebars

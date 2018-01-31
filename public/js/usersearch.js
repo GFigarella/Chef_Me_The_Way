@@ -49,19 +49,9 @@ $(document).ready(function() {
         }
     });
 
-    //send the returned data to the table rows
+        // //clear out the previous search
 
-    // $.each(data, function(key, value) {
-    //     var tr = $("<tr />")
-    //    $.each(value, function(k, v) {
-    //      tr.append(
-    //        $("<td />", {
-    //          html: v
-    //         })
-    //      );
-    //     $("table tbody").append(tr)
-    //    })
-    //  });
+        // $("#table_rows").clear();
 
     console.log("Search completed.");
     });
