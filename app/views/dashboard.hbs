@@ -1,0 +1,38 @@
+{{!-- The dashboard displays the user's saved recipes as well as the profile info (email) and a log out button --}}
+<div class="container-fluid">
+    <div class="row">
+        <fieldset class="dashboard-border">
+            <legend class="dashboard-border">Saved Recipes</legend>
+            <div class="col-md-8">
+                <br>
+                <button type="button" class="btn btn-outline-primary">Go to Search</button>
+                <br>
+                <fieldset class="recipe-saved">
+                    <h1>{{recipe_name}}</h1><br>
+                    <h3>Calories: {{recipe_calories}}</h3><br>
+                    <h4>Inrgedients: {{recipe_ingredients_list}}</h4>
+                </fieldset>
+
+                <fieldset class="recipe-saved">
+                    {{recipe_name}} {{recipe_calories}} {{recipe_ingredients_list}}
+                </fieldset>
+
+                <fieldset class="recipe-saved">
+                    {{recipe_name}} {{recipe_calories}} {{recipe_ingredients_list}}
+                </fieldset>
+
+
+            </div>
+        </fieldset>
+
+        <fieldset class="dashboard-border">
+            <legend class="dashboard-border">Profile</legend>
+            <div class="col-md-4">
+
+
+                <div class="dashboard-body">
+                    <p>Email: {{email}} </p>
+                </div>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+        </fieldset>
+        </div>

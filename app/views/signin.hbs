@@ -1,0 +1,25 @@
+<!-- the signin page takes the user's login information and should lead to the dashboard afterwards -->
+<div class="container">
+    <div class="col-sm-6 col-sm-offset-3">
+        <h1>
+            <span class="fa fa-sign-in"></span>Login</h1>
+
+        <!-- LOGIN FORM -->
+
+        <form id="signin" name="signin" method="post" action="signin">
+            <label for="email">Email Address</label>
+            <input class="text" name="email" type="text" />
+            <label for="password">Password</label>
+            <input name="password" type="password" />
+            <input class="btn" type="submit" value="Sign In" />
+        </form>
+
+        <hr>
+
+        <p>Need an account?
+            <a href="/signup">Signup</a>
+        </p>
+        <p>Or go
+            <a href="/">home</a>.</p>
+    </div>
+</div>
