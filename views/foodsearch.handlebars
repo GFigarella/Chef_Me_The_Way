@@ -1,6 +1,33 @@
-{{#each foodsearch}}
+{{!-- {{#each foodsearch}}
 {{!-- {{#each val in }}
     <p>Recipes: {{recipe.name.first}}</p>
     <p>weight: {{recipe.weight.grams}}</p> --}}
 {{!-- {{/each}} --}}
-{{/each}}
+{{!-- {{/each}} --}} --}}
+
+    <h1>Handlebars.js test</h1>
+
+    <div id='container'></div>
+
+<script id="templateOne" type="x-template">
+    <table id="table" class="table table-striped table-bordered table-condensed table-hover" >
+        <tr> 
+            <th>
+                Column one
+            </th>
+            <th>
+                Column two
+            </th>                                                
+        </tr>           
+            {{#rows}} 
+        <tr>
+            <td>
+                {{name}}
+            </td>
+             <td>
+                {{age}}
+             </td>                     
+        </tr>               
+                {{/rows}}        
+    </table>                	     	        	
+</script>
