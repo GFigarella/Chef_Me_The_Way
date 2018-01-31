@@ -1,6 +1,6 @@
-/* @authors: 
-@github:
-@comment: chef-me-the-way app by ret-r0 */
+/* @authors:  */
+/* @github: */
+/* @comment: chef-me-the-way app by ret-r0 */
 
 @font-face {
     font-family: 'dragon_warrior_nesregular';
@@ -11,7 +11,22 @@
 
 }
 
-body {
+/* @authors:  */
+
+
+/* @github: */
+
+
+/* @comment: chef-me-the-way app by ret-r0 */
+
+@font-face {
+    font-family: 'dragon_warrior_nesregular';
+    src: url('dragon_warrior_nes-webfont.woff2') format('woff2'), url('dragon_warrior_nes-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  body {
     /* we should change this to whatever? */
     background-image: url("https://wallpaper.wiki/wp-content/uploads/2017/04/wallpaper.wiki-Food-Wallpaper-HD-PIC-WPD006576.jpg");
     font-family: 'dragon_warrior_nesregular';
@@ -49,6 +64,7 @@ body {
     padding: 0 1.4em 1.4em 1.4em !important;
     margin: 0 0 1.5em 0 !important;
     border-radius: 5px;
+    text-align: center;
   }
   
   form {
@@ -56,7 +72,7 @@ body {
     float: right !important;
   }
   
-  button {
+  btn btn-outline-success my-2 my-sm-0 {
     float: right !important;
     border: none !important;
   }
@@ -65,3 +81,8 @@ body {
     padding: 5px;
     border: 2px solid silver !important;
   }
+  
+  .btn {
+    padding: 5px;
+  }
+  
