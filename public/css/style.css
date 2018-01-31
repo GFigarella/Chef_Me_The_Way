@@ -1,36 +1,67 @@
+/* @authors: 
+@github:
+@comment: chef-me-the-way app by ret-r0 */
+
 @font-face {
-    font-family: "Lazer84";
-    src: url("fonts/Lazer84.ttf");
-    src: 
-    url("css/fonts/Lazer84.woff") format("woff"),
-    url("css/fonts/Lazer84.otf") format("opentype"),
-    url("css/fonts/Lazer84.svg#filename") format("svg");
-    }
+    font-family: 'dragon_warrior_nesregular';
+    src: url('dragon_warrior_nes-webfont.woff2') format('woff2'),
+         url('dragon_warrior_nes-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 
-body{
-    background: url("images/spoon.jpeg");
 }
 
-h1 {
-    font-family: 'Lazer84';
-    font-weight:normal;
-    font-style:normal;
-    font-size: 80px;
-    color: rgb(189, 3, 3);
-}
-h2{
-    font-family: 'Rajdhani', sans-serif;
-    color: rgb(166, 186, 250);
-}
-h3{
-    color: burlywood;
-}
-.section{
-    width: 70%;
-    margin-left: 15%;
-}
-.container{
-    background: white;
-    width: 45%;
-    height:auto;
-}
+body {
+    /* we should change this to whatever? */
+    background-image: url("https://wallpaper.wiki/wp-content/uploads/2017/04/wallpaper.wiki-Food-Wallpaper-HD-PIC-WPD006576.jpg");
+    font-family: 'dragon_warrior_nesregular';
+  }
+  
+  fieldset,
+  legend,
+  nav,
+  a,
+  button,
+  input {
+    background-color: black !important;
+    color: white !important;
+  }
+  
+  fieldset.dashboard-border {
+    border: 5px solid silver !important;
+    padding: 0 1.4em 1.4em 1.4em !important;
+    margin: 0 0 1.5em 0 !important;
+    border-radius: 25px;
+  }
+  
+  legend.dashboard-border {
+    font-size: 1.2em !important;
+    font-weight: bold !important;
+    text-align: center !important;
+    width: auto;
+    padding: 0 10px;
+    border-bottom: none;
+  }
+  
+  .recipe-saved {
+    width: auto;
+    border: 5px solid silver !important;
+    padding: 0 1.4em 1.4em 1.4em !important;
+    margin: 0 0 1.5em 0 !important;
+    border-radius: 5px;
+  }
+  
+  form {
+    margin: 5px !important;
+    float: right !important;
+  }
+  
+  button {
+    float: right !important;
+    border: none !important;
+  }
+  
+  input {
+    padding: 5px;
+    border: 2px solid silver !important;
+  }
