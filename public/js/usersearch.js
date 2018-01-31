@@ -5,7 +5,19 @@ function recipeSearch(run) {
     return url;
 }
 
+//variables stored globally
+
+//make each new entry a button
+
+
+
 $(document).ready(function() {
+
+    var newButton = $("<button>");
+    newButton.attr("type", "button");
+     newButton.addClass("btn btn-default");
+
+    //on click, log that the button has been clicked and run the search function
 
     $("#perform").click(function() {
 
@@ -15,17 +27,42 @@ $(document).ready(function() {
         var url = recipeSearch(run);
         console.log(run);
 
+        //perform call to API
+
     $.ajax( {
         type: "GET",
         url: url,
         dataType: "jsonp",
         success: function(data) {
             console.log(data);
+
+            //add new recipes to the table
+
+            for (i = 0; i < 9; i++) {
+
+                $("#table_rows").append ("<tr><td>" + data.hits[i].recipe.label +  "</td>" + "<td>" + data.hits[i].recipe.ingredientLines + "</td>" + "<td><button type=button class=btn btn-default>Save Recipe</button>"+ "</td></tr>"
+                );
+               }
         },
         error: function(errorMessage) {
             console.log("Error, try again");
         }
     });
+
+    //send the returned data to the table rows
+
+    // $.each(data, function(key, value) {
+    //     var tr = $("<tr />")
+    //    $.each(value, function(k, v) {
+    //      tr.append(
+    //        $("<td />", {
+    //          html: v
+    //         })
+    //      );
+    //     $("table tbody").append(tr)
+    //    })
+    //  });
+
     console.log("Search completed.");
     });
 });
