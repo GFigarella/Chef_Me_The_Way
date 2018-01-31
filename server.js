@@ -9,6 +9,7 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var app      = express();
 var port     = process.env.PORT || 8080;
+var models = require("./models");
 
 var passport = require('passport');
 var flash    = require('connect-flash');
@@ -45,5 +46,11 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
 // launch ======================================================================
-app.listen(port);
-console.log('The magic happens on port ' + port);
+// app.listen(port);
+// console.log('The magic happens on port ' + port);
+
+models.sequelize
+ .sync()
+  .then( () => {
+ 		app.listener(port, () => console.log("Listening on: " + port));
+  });
