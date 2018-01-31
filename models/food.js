@@ -1,69 +1,59 @@
-var express = require('express'), Sequelize = require('sequelize'), http = require('http'), restful   = require('sequelize-restful'), sequelize = new Sequelize('database', 'username', 'password'), app = express();
- 
-//API key and require
+var axios = require("axios");
+var express = require('express');
+var app = express();
+var bodyParser = ("body-parser");
+var exphbs = require("express-handlebars");
 
-var NutritionixClient = require('nutritionix');
-var nutritionix = new NutritionixClient({
-    appId: 'da81ce22',
-    appKey: '628619f77ba41aa72c5b3d4360601da6'
-    // debug: true, // defaults to false 
+//test
+
+app.engine("handlebars", exphbs({defaultLayout: "main"}));
+app.set("view engine", "handlebars");
+
+//Perform a for loop through the API for the user
+
+app.get("/food", function (req, res) {
+axios.get("https://api.edamam.com/search?&q=chicken&app_id=4a5d81a2&app_key=379308ab9da9a8ee47f63563d2774ac4&from=0&to=9&q=", {
+})
+.then(function (response) {
+
+    var recipeRes = response.data.hits[1];
+    // console.log(recipeRes);
+    var finalObj = {
+            
+        recipe: response.data.hits[0].recipe.label,
+        ingredients: response.data.hits[0].recipe.ingredientLines,
+        calories: response.data.hits[0].recipe.calories 
+    };
+    
+    console.log(recipeRes);
+    //loop
+    // for (var i = 0; i < recipeRes.length; i++) {
+
+
+    // }
+
+    res.send(finalObj)
+    // res.render("foodsearch", )
+    // for (var i=0; i < recipeRes.length; i++) {
+
+    //     return res.render("foodsearch", recipeRes[i]);
+
+    // }
+
+  })
+  .catch(function (error) {
+    console.log(error);
+
+  });
+
 });
 
-// define all your models before the configure block 
- 
-app.configure(function() {
-  app.use(restful(sequelize, { /* options */ }));
-});
- 
-http.createServer(app).listen(app.get('port'), function(){
-  console.log("Express server listening on port " + app.get('port'));
-});
 
+  //for this
 
-//PLACEHOLDER CODE FOR npm CALL TO PACKAGE
+  //if response is data hits recipe
 
-// app.get("/api", function (req, res) {
-
-//     console.log("Hello?");
-
-//     nutritionix.search.standard({
-//         q: 'crouton',
-//         // use these for paging 
-//         limit: 10,
-//         offset: 0,
-//         // controls the basic nutrient returned in search 
-//         search_nutrient: 'calories'
-//     }).then(successHandler, errorHandler)
-//         .catch(uncaughtExceptionHandler);
-
-//     console.log(res);
-// });
-
-// var foodSearch = function (req, res, next) {
-
-//     console.log("This is working");
-
-//     //testing for API return
-
-//     // app.get("/api", function (req, res) {
-
-//     //     console.log("Hello?");
-
-//     //     nutritionix.search.standard({
-//     //         q: 'crouton',
-//     //         // use these for paging 
-//     //         limit: 10,
-//     //         offset: 0,
-//     //         // controls the basic nutrient returned in search 
-//     //         search_nutrient: 'calories'
-//     //     }).then(successHandler, errorHandler)
-//     //         .catch(uncaughtExceptionHandler);
-
-//     //     console.log(res);
-//     // });
-
-// };
+  //the
 
 // app.use(foodSearch);
-
 app.listen(8080);
