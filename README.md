@@ -10,6 +10,10 @@ Chef Me the Way is a node-based web app that allows users to satisfy their cravi
 
 npm, express, session, cookieparser, bodyparser, morgan, passport, flash, handlebars
 
+## API
+
+[Recipe Search by Edamam](https://developer.edamam.com/edamam-docs-recipe-api)
+
 ## Current Issues
 
 * Users are unable to save recipes to push to a mySQL database.
