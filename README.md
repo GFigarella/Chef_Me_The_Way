@@ -4,6 +4,8 @@ Chef Me the Way is a node-based web app that allows users to satisfy their cravi
 
 <img src = "https://i.imgur.com/Lu0JWzK.jpg">
 
+<img src = "https://i.imgur.com/jc8zcQk.png">
+
 ## Packages 
 
 npm, express, session, cookieparser, bodyparser, morgan, passport, flash, handlebars
