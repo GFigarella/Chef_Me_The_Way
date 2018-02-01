@@ -6,7 +6,7 @@ var bodyParser = require('body-parser')
 var env = require('dotenv').load()
 var exphbs = require('express-handlebars')
 var port     = process.env.PORT || 8080;
- 
+app.use(express.static("public"));
 //For BodyParser
 app.use(bodyParser.urlencoded({
     extended: true
@@ -45,6 +45,7 @@ var models = require("./app/models");
 //Routes
  
 var authRoute = require('./app/routes/auth.js')(app,passport);
+require('./app/routes/api-routes.js');
  
  
 //load passport strategies
@@ -69,9 +70,8 @@ models.sequelize.sync().then(function() {
 app.listen(3000, function(err) {
  
     if (!err)
- 
         console.log("Site is live");
-         
+
     else console.log(err)
  
 });

@@ -1,4 +1,5 @@
 var authController = require('../controllers/authcontroller.js');
+var path = require ("path");
  
  
 module.exports = function(app, passport) {
@@ -19,7 +20,9 @@ module.exports = function(app, passport) {
         }
  
     ));
- 
+    app.get('/search', function(req, res){
+        res.sendFile(path.join(__dirname, "../../views/selection.html"));
+    })
  
     app.get('/dashboard', isLoggedIn, authController.dashboard);
  
