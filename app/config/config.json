@@ -4,7 +4,7 @@
  
         "username": "root",
  
-        "password": "root",
+        "password": null,
  
         "database": "sequelize_passport",
  

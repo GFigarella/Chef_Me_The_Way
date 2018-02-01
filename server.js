@@ -5,7 +5,9 @@ var session = require('express-session')
 var bodyParser = require('body-parser')
 var env = require('dotenv').load()
 var exphbs = require('express-handlebars')
- 
+
+var port     = process.env.PORT || 8080;
+
  
 //For BodyParser
 app.use(bodyParser.urlencoded({
