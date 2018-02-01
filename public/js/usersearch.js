@@ -39,9 +39,14 @@ $(document).ready(function() {
             //add new recipes to the table
 
             for (i = 0; i < 9; i++) {
-
-                $("#table_rows").append ("<tr><td>" + data.hits[i].recipe.label +  "</td>" + "<td>" + data.hits[i].recipe.ingredientLines + "</td>" + "<td><button type=button class=btn btn-default>Save Recipe</button>"+ "</td></tr>"
+                var newButton = $("<button>");
+                newButton.addClass("btn btn-primary");
+                newButton.text("Save Recipe");
+                newButton.attr('id', 'myButton');
+                newButton.attr('data-value', i);
+                $("#table_rows").append ("<tr><td>" + data.hits[i].recipe.label +  "</td>" + "<td>" + data.hits[i].recipe.ingredientLines + "</td>" + "<td class = btn_" + i + "></td></tr>"
                 );
+                $(".btn_" + i).append(newButton);
                }
         },
         error: function(errorMessage) {
