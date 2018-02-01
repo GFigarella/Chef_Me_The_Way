@@ -5,3 +5,11 @@ Chef Me the Way is a node-based web app that allows users to satisfy their cravi
 ## Packages 
 
 npm, express, session, cookieparser, bodyparser, morgan, passport, flash, handlebars
+
+## Current Issues
+
+* Users are unable to save recipes to push to a mySQL database.
+* Custom CSS causes certain portions of the app to break, such as preventing users from seeing the recipe table after search.
+* File structure must be organized for better ease of use for developers.
+
+2018 Team Ret -r0 UCF Bootcamp
